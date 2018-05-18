@@ -1,0 +1,30 @@
+//Setup
+
+	//Function for white line camera
+	
+	//Function for distance sensors
+	
+	//Function for turning to find the white line
+	
+	//Function for opening the ssh gate
+	
+	//Function to detect red line
+	
+	//Function for detecting orange line
+	
+	//Function for waiting for the gate to open
+
+//main
+
+	//Loop for first quadrant - breaks when finds the orange line
+	
+		//OpenGate
+		//WhiteLineError
+		//TurnToFind
+		//DetectOrange - breaks if detected
+	
+	//Loop for third/fourth quadrant - doesnt break
+		
+		//DistanceSensorError
+		//DetectRed
+		//GateTimer
