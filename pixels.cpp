@@ -2,6 +2,8 @@
 #include "E101.h"
 #include <time.h> 
 
+//Meg
+
 int camera(){ //basic idea:	
 	
 	int scanline = 120; //line of pixels being analysed
@@ -52,6 +54,10 @@ int camera(){ //basic idea:
 		//error = error/whitepixels;
 	}
 	
+	//Meg
+	
+	//Oscar
+	
 	double turnTimeSec;
 	double turnTimeMicro;
 	double errorTime;
@@ -83,6 +89,8 @@ int camera(){ //basic idea:
 return 0;
 }
 		
+
+//Oscar
 		
 		
 		
