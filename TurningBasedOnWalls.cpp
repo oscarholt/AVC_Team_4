@@ -2,6 +2,8 @@
 #include <time.h>
 #include "E101.h"
 
+//Daniel
+
 int main(){
 	init();
 
@@ -81,3 +83,5 @@ void centerInMaze(){
 	}
 
 }
+
+//Daniel
