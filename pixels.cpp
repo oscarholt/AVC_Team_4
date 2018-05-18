@@ -16,7 +16,7 @@ int camera(){ //basic idea:
 	int row = 1;
 	int column = 1;
 	int total = 0;
-	//calculating threshold
+	//calculating threshold - NOT MEG
 	while(row <= 240){
 		while(column <= 320){
 			total += get_pixel (row, column, colournumber);
@@ -24,16 +24,16 @@ int camera(){ //basic idea:
 	}
 	threshold = (total/76800)*0.5;
 	
-	//calculating the error
+	//calculating the error  //Meg
 	while(1){
 		take_picture();				
 		
 		//Scanning the scanline row and calculating the error
-		while (rownumber <= 320) {
+		while (rownumber <= 320) { 
 			//storing the whiteness of each pixel along the scanline
 			unsigned char pixel = get_pixel (rownumber, scanline, colournumber);
 
-			if (pixel >= threshold){ //if the current pixel is considered white
+			if (pixel >= threshold){ //if the current pixel is considered white  
 				pixel = 1;
 				whitepixels = whitepixels + 1;   //if pixel is white, then increase whitepixel count by 1
 			}
