@@ -2,6 +2,8 @@
 #include <time.h>
 #include "E101.h"
 
+// Oscar
+
 int main(){
 		init();
 		int close_reading;
@@ -15,3 +17,5 @@ int main(){
 			}
 		
 	}
+
+//Oscar
