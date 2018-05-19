@@ -1,18 +1,18 @@
 //Setup
 
-	//Function for white line camera
+	//Function for white line camera --mostly done, may need modification after testing
 	
-	//Function for distance sensors
+	//Function for distance sensors --mostly done, may need modification after testing
 	
-	//Function for turning to find the white line
+	//Function for turning to find the white line  -- in theory this is done, again may need testing
 	
-	//Function for opening the ssh gate
+	//Function for opening the ssh gate  -- Meg is working on this
 	
-	//Function to detect red line
+	//Function to detect red line  -- will be similar to white line detector -- Oscar working on this?
 	
-	//Function for detecting orange line
+	//Function for detecting orange line   -- will be similar to white line detector  -- Oscar working on this?
 	
-	//Function for waiting for the gate to open
+	//Function for waiting for the gate to open  -- Meg can work on this
 
 //main
 
