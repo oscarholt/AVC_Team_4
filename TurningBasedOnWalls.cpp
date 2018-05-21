@@ -25,13 +25,13 @@ int main(){
 		if(frontADC >= closeReading){
 			set_motor(0, 0);
 			set_motor(1, 0);
-			sleep(0,200000);
+			sleep1(0,200000);
 
 			//if there is a right and left wall the robot should turn 180
 			if(leftADC < closeReading && rightADC < closeReading){
 				set_motor(1, -255);
 				set_motor(0, 255);
-				sleep(0, 2*timeToTurn90Degrees);
+				sleep1(0, 2*timeToTurn90Degrees);
 				set_motor(1, 0);
 				set_motor(0, 0);
 
@@ -41,7 +41,7 @@ int main(){
 			if(leftADC-averageNoise > rightADC){
 				set_motor(1, -255);
 				set_motor(0, 255);
-				sleep(0, timeToTurn90Degrees);
+				sleep1(0, timeToTurn90Degrees);
 				set_motor(1, 0);
 				set_motor(0, 0);
 			}
@@ -49,7 +49,7 @@ int main(){
 			else if(rightADC-averageNoise > leftADC){
 				set_motor(1, 255);
 				set_motor(0, -255);
-				sleep(0, timeToTurn90Degrees);
+				sleep1(0, timeToTurn90Degrees);
 				set_motor(1, 0);
 				set_motor(0, 0);
 			}
@@ -72,10 +72,11 @@ void centerInMaze(){
 	set_motor(0, 0);
 	set_motor(1, 0);
 	int lowestReading = 1000;
+	int timeToTurn90Degrees = 1;
 	for(int i = 0; i < 10; i++){
 		set_motor(0, 255);
 		set_motor(1, -255);
-		sleep(timeToTurn90Degrees/4);
+		sleep1(timeToTurn90Degrees/4);
 		set_motor(0, 0);
 		set_motor(1, 0);
 		
