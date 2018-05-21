@@ -2,8 +2,6 @@
 #include <time.h>
 #include "E101.h"
 
-//Daniel
-
 int main(){
 	init();
 
@@ -11,7 +9,7 @@ int main(){
 	int rightADC;
 	int frontADC;
 	int averageNoise = 20;  //to be researched
-	int timeToTurn90Degrees = 1; //to be researched
+	int timeToTurn90Degrees = 4; //to be researched
 	int closeReading = 1; //can be changed depending on short or long distance sensors used
 
 	//Assuming left motor is motor 0 and right motor is motor 1
@@ -22,13 +20,13 @@ int main(){
 		frontADC = read_analog(2);
 
 		//if the car reaches a wall
-		if(frontADC >= closeReading){
+		if(frontADC == 1){
 			set_motor(0, 0);
 			set_motor(1, 0);
 			sleep1(0,200000);
 
 			//if there is a right and left wall the robot should turn 180
-			if(leftADC < closeReading && rightADC < closeReading){
+			if(leftADC == 1 && rightADC == 1){
 				set_motor(1, -255);
 				set_motor(0, 255);
 				sleep1(0, 2*timeToTurn90Degrees);
@@ -38,7 +36,7 @@ int main(){
 			}
 
 			//if there is a left wall but not a right wall then the robot should go right
-			if(leftADC-averageNoise > rightADC){
+			if(leftADC == 1){
 				set_motor(1, -255);
 				set_motor(0, 255);
 				sleep1(0, timeToTurn90Degrees);
@@ -46,7 +44,7 @@ int main(){
 				set_motor(0, 0);
 			}
 			//if there is a right wall but not a left wall then the robot should go right
-			else if(rightADC-averageNoise > leftADC){
+			else if(rightADC == 1){
 				set_motor(1, 255);
 				set_motor(0, -255);
 				sleep1(0, timeToTurn90Degrees);
@@ -68,21 +66,5 @@ return 0;}
 
 //concept stabalising function
 //if the robot is off centre then it should check its surroundings to center itself
-void centerInMaze(){
-	set_motor(0, 0);
-	set_motor(1, 0);
-	int lowestReading = 1000;
-	int timeToTurn90Degrees = 1;
-	for(int i = 0; i < 10; i++){
-		set_motor(0, 255);
-		set_motor(1, -255);
-		sleep1(timeToTurn90Degrees/4);
-		set_motor(0, 0);
-		set_motor(1, 0);
-		
-
-	}
 
 }
-
-//Daniel
