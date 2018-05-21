@@ -10,6 +10,22 @@
 	//Function for turning to find the white line  -- in theory this is done, again may need testing
 	
 	//Function for opening the ssh gate  -- Meg is working on this
+
+	int OpenGate(){
+	
+  	 char server_addr[15] = {'1','3','0','.','1','9','5','.','6','.','1','9','6','\0'};
+ 
+   	int port = 1024;
+   
+   	char message[6] = {'P','l','e','a','s','e'}; 
+
+		connect_to_server(server_addr,port);
+
+		send_to_server(message);
+	
+		receive_from_server(message);
+			return 0;
+		}
 	
 	//Function to detect red line  -- will be similar to white line detector -- Oscar working on this?
 	
@@ -24,7 +40,7 @@
 		int leftSensor = read_analog(0);
 		int rightSensor = read_analog(1);
 			//Return int 1 if each distance sensor has a positive reading
-		if(leftSensor  = 1 && rightSensor = 1){
+		if(leftSensor  == 1 && rightSensor == 1){
 			return 1;
 		}
 		else{
@@ -39,6 +55,12 @@ int main (){
 	//Loop for first quadrant - breaks when finds the orange line
 	while(1){
 		//OpenGate
+		int connect_to_server( char server_addr[15],int port);
+	
+		int send_to_server(char message[6]);
+	 
+		int receive_from_server(char message[24]);
+		
 		//WhiteLineError
 		//TurnToFind
 		//DetectOrange - breaks if detected
