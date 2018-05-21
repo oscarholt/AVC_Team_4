@@ -13,9 +13,13 @@
 	
 	//Function to detect red line  -- will be similar to white line detector -- Oscar working on this?
 	
+	int redLineDetector(){
+		
+		}
+	
 	//Function for detecting maze start
 	
-		int wallDetector(){
+	int wallDetector(){
 			//Scan each distance sensor on either side
 		int leftSensor = read_analog(0);
 		int rightSensor = read_analog(1);
@@ -30,7 +34,8 @@
 	//Function for waiting for the gate to open  -- Meg can work on this
 
 //main
-
+int main (){
+	init();
 	//Loop for first quadrant - breaks when finds the orange line
 	while(1){
 		//OpenGate
@@ -43,5 +48,3 @@
 	while(1){
 		//DistanceSensorError
 		//DetectRed
-		//GateTimer
-	}
