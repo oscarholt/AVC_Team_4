@@ -4,11 +4,6 @@
 #include "E101.h"
 
 	//Function for white line camera --mostly done, may need modification after testing
-	
-	//Function for distance sensors --mostly done, may need modification after testing
-	
-	//Function for turning to find the white line  -- in theory this is done, again may need testing
-//Function for white line camera --mostly done, may need modification after testing
 	int WhiteLineFollow(){
 		int scanline = 200; //line of pixels being analysed
 		int colournumber = 3; //type of color (3 is whiteness)
@@ -20,6 +15,7 @@
 		int row = 0;
 		int column = 0;
 		int speed = -255;
+	
 		//calculating threshold
 		take_picture();
 		display_picture(1, 0);
@@ -35,6 +31,19 @@
 				if(min > get_pixel(column, row, colournumber)){						
 					min = get_pixel(column, row, colournumber);				
 				}
+				
+		
+			unsigned char red = get_pixel(column, row, 0);
+		//	unsigned char green = get_pixel(column, row, 1);
+		//    unsigned char blue = get_pixel(column, row, 2);
+		  
+		if (red > 100) { // investigate this red value
+			set_motor(0, 0);
+			set_motor(1, 0);
+			sleep1(0,200000);
+	}
+
+			
 				column += 1;
 			}
 			row+=1;
@@ -120,31 +129,63 @@
 			}
 		
 	
+	//Function for distance sensors --mostly done, may need modification after testing
+	
+	//Function for turning to find the white line  -- in theory this is done, again may need testing
+	
 	//Function for opening the ssh gate  -- Meg is working on this
-
 	// Meg 
 
-	void OpenGate(){
+void OpenGate(){
 	 char server_addr[15] = {'1','3','0','.','1','9','5','.','6','.','1','9','6','\0'};
- 	 int port = 1024;
-      	char message[6] = {'P','l','e','a','s','e'}; 
+ 
+   int port = 1024;
+   
+   char message[6] = {'P','l','e','a','s','e'}; 
 		
 		connect_to_server(server_addr,port);
 
 		send_to_server(message);
 	
 		receive_from_server(message);
-	}
+	
+	
+}
+
+
+
 	
 	//Function to detect red line  -- will be similar to white line detector -- Oscar working on this?
+			int GetRed(){
+		int row = 0;
+		int column = 0;
 	
-	int redLineDetector(){
-		
-		}
+		take_picture();
+		display_picture(1, 0);
+	
+		while(row <= 319){	
+			column = 0;
+			while(column <= 239){
+			unsigned char red = get_pixel(column, row, 0);
+		//	unsigned char green = get_pixel(column, row, 1);
+		//    unsigned char blue = get_pixel(column, row, 2);
+		  
+			if (red > 100) { // investigate this red value
+			set_motor(0, 0);
+			set_motor(1, 0);
+			sleep1(0,200000);
+			}
+				column++;
+	
+			  } 
+			   row++;
+			      }
+				   return 0;
+			        }
 	
 	//Function for detecting maze start
 	
-	int wallDetector(){
+		int wallDetector(){
 			//Scan each distance sensor on either side
 		int leftSensor = read_analog(0);
 		int rightSensor = read_analog(1);
@@ -157,10 +198,14 @@
 		}
 	}
 	//Function for waiting for the gate to open  -- Meg can work on this
+		
+			
+	
 
 //main
-int main (){
+int main() {
 	init();
+
 	//Loop for first quadrant - breaks when finds the orange line
 	while(1){
 		//OpenGate
@@ -169,12 +214,16 @@ int main (){
 		//WhiteLineError
 		WhiteLineFollow();
 		
-		//WhiteLineError
 		//TurnToFind
-		//DetectOrange - breaks if detected
+		//DetectRed - breaks if detected
 	}
 	
 	//Loop for third/fourth quadrant - doesnt break
 	while(1){
 		//DistanceSensorError
 		//DetectRed
+		GetRed();
+		
+		//GateTimer
+	}
+}
